@@ -43,3 +43,58 @@
 .read-the-docs {
   color: #888;
 }
+
+.flex-r {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.gap-sm {
+  gap: 0.5rem;
+}
+.gap-md {
+  gap: 1rem;
+}
+.gap-lg {
+  gap: 1.5rem;
+}
+
+.flex-c {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.align-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-sm {
+  padding: 0.1em 0.8em;
+}
+.btn-md {
+  padding: 0.3em 1.0em;
+}
+.btn-lg {
+  padding: 0.6em 1.2em;
+}
+
+.todo-item {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 1em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+@media (prefers-color-scheme: light) {
+  .todo-item {
+    background-color: #f3f3f3;
+  }
+}
