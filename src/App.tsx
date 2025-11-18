@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import tudevLogo from './assets/tudev.jpeg'
 import './App.css'
+import TodoItem from './TodoItem'
 
 function App() {
   const [todos, setTodos] = useState<string[]>([]);
@@ -34,7 +35,7 @@ function App() {
       </div>
       <h1>Vite + React + TUDev</h1>
       <div className="card">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex-r align-center">
           <input 
             type="text" 
             name="todo"
@@ -45,9 +46,16 @@ function App() {
         </form>
       </div>
 
-      <div className="card">
-
+      <div className="card flex-c align-center">
+        {todos.map((item, index) => (
+          <TodoItem
+            key={index}
+            item={item}
+            onDelete={() => {}}
+          />
+        ) )}
       </div>
+
       <p className="read-the-docs">
         Click on the Vite, React, or TUDev logos to learn more
       </p>

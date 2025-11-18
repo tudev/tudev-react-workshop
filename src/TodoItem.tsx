@@ -9,21 +9,33 @@ export default function TodoItem(props: TodoItemProps) {
   const [completed, setCompleted] = useState<boolean>(false);
 
   useEffect(() => {
-    if(completed === true) {
+    if (completed === true) {
       props.onComplete?.();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [completed, props.onComplete]);
 
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompleted(e.currentTarget.checked);
+  }
+
   return (
     <div
-      onClick={() => setCompleted(prev => !prev)}
+      className="flex-r gap-md todo-item"
     >
+      <input 
+        type="checkbox" 
+        onChange={handleCheck}
+        checked={completed}
+      />
       <p
         style={{ textDecoration: completed ? "line-through" : undefined }}
       >{props.item}</p>
-      <button onClick={() => props.onDelete}>Delete</button>
+      <button 
+        onClick={props.onDelete}
+        className="btn-sm"
+      >Delete</button>
     </div>
   )
 }
