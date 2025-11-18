@@ -5,7 +5,19 @@ import tudevLogo from './assets/tudev.jpeg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState<string[]>([]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const todoText = formData.get('todo') as string;
+    if(!todoText) return;
+    
+    if (todoText.trim()) {
+      setTodos([...todos, todoText.trim()]);
+      e.currentTarget.reset();
+    }
+  };
 
   return (
     <>
@@ -22,12 +34,19 @@ function App() {
       </div>
       <h1>Vite + React + TUDev</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <form onSubmit={handleSubmit}>
+          <input 
+            type="text" 
+            name="todo"
+            placeholder="Enter a todo..." 
+            required
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div className="card">
+
       </div>
       <p className="read-the-docs">
         Click on the Vite, React, or TUDev logos to learn more
