@@ -20,6 +20,10 @@ function App() {
     }
   };
 
+  const handleDelete = (index: number) => {
+    setTodos(prev => prev.filter((_, i) => i !== index));
+  }
+
   return (
     <>
       <div>
@@ -51,7 +55,7 @@ function App() {
           <TodoItem
             key={index}
             item={item}
-            onDelete={() => {}}
+            onDelete={() => handleDelete(index)}
           />
         ) )}
       </div>
